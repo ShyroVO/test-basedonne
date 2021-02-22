@@ -1,15 +1,17 @@
 <?php
+require 'version-objet.php';
+require './Classes/Utilisateurs.php';
+require './Classes/Clients.php';
+require './Classes-static/Utilisateurs-static.php';
+require './Classes-static/Clients-static.php';
 
-try {
-    $server = 'localhost';
-    $db = 'live';
-    $user = 'root';
-    $pass = ''; //pas de mdp
+// Creation de la connexion
+$database = new DB('localhost', 'live', 'root', '');
+$link = $database->getDbLink();
 
-    $bdd = new PDO("mysql:host=$server;dbname=$db;charset=utf8", $user , $pass);
-    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connectés";
-}
-catch (PDOException $exception) {
-    echo $exception->getMessage();
-}
+$utilisateurs = new Utilisateurs($link);
+$clients = new Clients($link);
+
+
+$utilisateursStatic = new UtilisateursStatic();
+$clientsStatic = new ClientsStatic();
