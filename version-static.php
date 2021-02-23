@@ -27,4 +27,6 @@ class DbStatic {
         return self::$dbLink;
     }
 
+    public function __clone() {}
+
 }

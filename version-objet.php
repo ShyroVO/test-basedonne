@@ -15,7 +15,7 @@ class DB {
         $this->dbLink = $this->connect();
     }
 
-    public function connect() : ?PDO {
+    private function connect() : ?PDO {
         try {
             $bdd = new PDO("mysql:host=$this->server;dbname=$this->db;charset=utf8", $this->user , $this->pwd);
             $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
